@@ -3,6 +3,8 @@ kind: Component
 metadata:
   name: omrizi-hello-world-repo
   description: Testing repo to check the backstage catalog
+  annotations:
+  backstage.io/techdocs-ref: value
 spec:
   type: service
   lifecycle: production
