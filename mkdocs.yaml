@@ -1,5 +1,5 @@
 site_name: 'hello-world-tech-doc'
 nav:
-  -Home: index.md
+  - Home: index.md
 plugins:
   - techdocs-core
