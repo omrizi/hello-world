@@ -1,0 +1,39 @@
+name: Python Run Script
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        required: true
+        type: string
+        description: 'the env'
+      tier:
+        required: true
+        type: string
+        description: 'the tier'
+env:
+  ENV: ${{ inputs.env }}
+  TIER: ${{ inputs.tier }}
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+        
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ];
+            then
+              pip install -r requirements.txt
+          fi
+
+      - name: Run script
+        run: |
+          python3 main.py
